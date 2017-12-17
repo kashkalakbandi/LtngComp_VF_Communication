@@ -1,0 +1,29 @@
+<apex:page standardController="Contact" extensions="Integrator" sidebar="false" showHeader="false">
+    <apex:pageBlock id="mapBlock" rendered="true" >
+        {!street},{!city},{!state}
+        
+        <apex:map width="600px" height="800px" mapType="roadmap"  rendered="true"
+                  center="{!street},{!city},{!state}">
+            <apex:mapMarker title="Contact Details" position="{!street},{!city},{!state}" />
+            
+        </apex:map>
+    </apex:pageBlock>
+    <apex:form >
+        
+        <apex:actionFunction name="passStringToController" action="{!setParam}" rerender="myHiddenField" reRender="mapBlock">
+            <apex:param name="p1" value="" assignTo="{!pageDataList}" />
+        </apex:actionFunction>
+    </apex:form>
+    
+    <script>
+    
+    window.addEventListener("message", function(event) {
+        alert('pagedata'+ event.data);
+        
+        passStringToController(event.data.toString());
+        
+    }, false);
+    
+    </script>
+    
+</apex:page>

@@ -1,0 +1,21 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    
+    <aura:handler event="c:MapAlert" action="{!c.handleMapEvent}"/>
+    <aura:attribute name="messageFromEvent" type="String"/>
+    <aura:attribute name="message" type="String"/>
+    
+    <aura:attribute name="cityFromEvent" type="String"/>
+    <aura:attribute name="stateFromEvent" type="String"/>
+    <aura:attribute name="countryFromEvent" type="String"/>
+    <aura:attribute name="streetFromEvent" type="String"/>
+    
+    
+    <iframe aura:id="vfFrame" src="{!'https://wavestudiow18.my.salesforce.com/apex/ContactMap'}"  width="100%" height="800"/>
+    
+    
+    <h2> {!v.messageFromEvent}</h2> 
+    <h2>  {!v.cityFromEvent} </h2>
+    <h2> {!v.stateFromEvent} </h2>
+    <h2>{!v.countryFromEvent} </h2>
+    <h2> {!v.streetFromEvent} </h2>
+</aura:component>

@@ -1,0 +1,61 @@
+<aura:component controller="Integrator" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:registerEvent name="appEvent" type="c:MapAlert"/>
+    <aura:attribute name="contact" type="Contact"/>
+    <aura:attribute name="contactList" type="Contact[]"/>
+    
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer" height="600px">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <div class="slds-truncate" title="Contact Name">Contact Details</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Contact Name">
+                    <div class="slds-truncate" title="Contact">
+                        
+                        <aura:iteration items="{!v.contactList}" var="item">  
+                            <article class="slds-card">
+                                <div class="slds-card__header slds-grid">
+                                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                        <div class="slds-media__figure">
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <h4>
+                                                <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="[object Object]">
+                                                    <span class="slds-text-heading_small">
+                                                        
+                                                        <span class="slds-avatar slds-avatar_circle">
+                                                            <span  title="Description of icon when needed">
+                                                                <img src="{!$Resource.usericons}" width="50" height="50"/>
+                                                                <span class="slds-assistive-text">Description of icon</span>
+                                                            </span>
+                                                        </span>
+                                                        Mr.  
+                                                        <ui:outputText value="{!item.FirstName}" /></span>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                    </header>
+                                    <div class="slds-no-flex">
+                                        <lightning:button aura:id="showMapButton" label="Find Address" name="{! item.Id }" onclick="{! c.setMap }"/>
+                                    </div>
+                                </div>
+                                <div class="slds-card__body" ></div>
+                                <footer class="slds-card__footer">
+                                    
+                                </footer>
+                            </article>   
+                            
+                        </aura:iteration>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+</aura:component>
